@@ -1,0 +1,51 @@
+{
+    "title": "IP2Location IP Geolocation",
+    "description": "IP2Location web service providing a service to do a reverse lookup of an IP address to an ISO3166 country code, region or state, city, latitude and longitude, ZIP/Postal code, time zone, Internet Service Provider (ISP) or company name, domain name, net speed, area code, weather station code, weather station name, mobile country code (MCC), mobile network code (MNC) and carrier brand, elevation, and usage type. Refer to https://www.ip2location.com/web-service for further information.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/ip2location.com/geolocation/1.0/openapi.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.ip2location.com",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_": {
+            "main": "./lib/actions/get_.js",
+            "title": "Get geolocation information via IP address",
+            "description": "Get geolocation information via IP address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
